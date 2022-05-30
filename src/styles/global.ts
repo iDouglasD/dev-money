@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import { darken } from "polished";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
@@ -53,4 +54,78 @@ button {
   cursor: not-allowed;
 }
 
+.react-modal-overlay {
+  background:rgba(0,0,0,0.5);
+
+  position:fixed;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left:0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal-content{
+  width:100%;
+  max-width:576px;
+  background:var(--background);
+  padding:3rem;
+  position:relative;
+  border-radius:0.25rem;
+}
+
+.react-modal-close {
+  position:absolute;
+  right:1.5rem;
+  top:1.5rem;
+  border:0;
+  background:transparent;
+
+  transition: filter 0.2s;
+
+  &:hover{
+    filter: brightness(0.9)
+  }
+}
+
+`;
+
+export const TransactionTypeContainer = styled.div`
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+
+    button {
+        height: 4rem;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.25rem;
+
+        background: transparent;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: border-color 0.2s;
+
+        &:hover {
+            border-color: ${darken(0.1, "#d7d7d7")};
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+
+        span {
+            display: inline-block;
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: var(--text-title);
+        }
+    }
 `;
